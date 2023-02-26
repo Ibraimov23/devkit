@@ -7,6 +7,8 @@ div(class="card")
         v-model="name"
         placeholder="Введите свое имя"
         solo
+        required
+        :rules="[(v) => !!v || 'Имя пользователя обязательно']"
         class="input"
         hide-details
       )
@@ -16,6 +18,8 @@ div(class="card")
         v-model="phone"
         placeholder="Введите свой номер телефона"
         solo
+        :rules="phoneRules"
+        required
         class="input"
         hide-details
       )
@@ -34,23 +38,66 @@ div(class="card")
         v-model="email"
         placeholder="Введите свой email"
         solo
+        :rules="emailRules"
         class="input"
         hide-details
       )
-    button Заказать сайт
+    button(:disable="!valid" @click="postForm()") Заказать сайт
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "HomeContactUsForm",
   data: () => ({
     name: null,
     phone: null,
     social: null,
+    valid: false,
     email: null,
+    phoneRules: null,
+    emailRules: null,
   }),
+  created() {
+    const phone_regex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+
+    this.phoneRules = [
+      (v) => !!v || "Номер телефона обязателен",
+      (v) => phone_regex.test(v) || "Неверно введен номер телефона",
+    ];
+
+    this.emailRules = [
+      (v) => !!v || "Email обязателен",
+      (v) => /.+@.+\..+/.test(v) || "Не корректный email",
+    ];
+  },
   methods: {
-    postForm() {},
+    postForm() {
+      if (this.$refs.form.validate()) {
+        this.message = `<b>Заявка с сайта DEVit</b>\n\n`;
+        this.message += `<b>Имя: </b><i>${this.name}</i>\n`;
+        this.message += `<b>Номер телефона: </b><i>${this.phone}</i>\n`;
+        this.message += `<b>Соц-сеть: </b><i>${this.social}</i>\n`;
+        this.message += `<b>Email: </b><i>${this.email}</i>\n`;
+        const api_url = `https://api.telegram.org/bot${this.$store.state.token}/sendMessage`;
+        axios
+          .post(api_url, {
+            chat_id: this.$store.state.chat_id,
+            parse_mode: "html",
+            text: this.message,
+          })
+          .then(() => {
+            this.email = null;
+            this.phone = null;
+            this.name = null;
+            this.social = null;
+          })
+          .catch((errors) => {
+            console.log(errors);
+          });
+      }
+    },
   },
 };
 </script>
