@@ -24,7 +24,7 @@ div(class="card")
         hide-details
       )
     div(class="mb-3")
-      div(class="pl-3 label font-semibold") Мессенджер(необязательно)
+      div(class="pl-3 label font-semibold") Мессенджер
       v-text-field(
         v-model="social"
         placeholder="Например телеграм"
@@ -33,7 +33,7 @@ div(class="card")
         hide-details
       )
     div
-      div(class="pl-3 label font-semibold") Email(необязательно)
+      div(class="pl-3 label font-semibold") Email
       v-text-field(
         v-model="email"
         placeholder="Введите свой email"
