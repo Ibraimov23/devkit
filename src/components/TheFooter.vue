@@ -9,7 +9,7 @@ footer(class="footer" id="footer")
         | проектах, сроках, нервах,
         br
         | несмотря ни на что.
-      div(class="mt-11") 2022 All Right Reserved
+      div(class="mt-11") 2023 All Right Reserved
     div(class="right")
       div
         a(href="#") Главная
@@ -19,13 +19,13 @@ footer(class="footer" id="footer")
         a(href="#") Стоимость 
         a(href="#") Портфолио
       div(class="media")
-        div(class="text-center") Россия 2022  
+        div(class="text-center") Россия 2023 
         div(class="socials")
-          a(href="https://t.me/vldslv25" target="_blank")
+          a(href="https://t.me/ibraimov_nursultan" target="_blank")
             img(class="icon" alt="telegram" src="@/assets/icons/telegram-icon.svg")
-          a(href="https://wa.me/89506797484" target="_blank")
+          a(href="https://wa.me/996551636369" target="_blank")
             img(class="icon" alt="whatsapp" src="@/assets/icons/whatsapp-icon.svg")
-          a(href="https://vk.com/vldslv25" target="_blank")
+          a(href="https://vk.com/id510664514" target="_blank")
             img(class="icon" alt="vkontakte" src="@/assets/icons/vkontakte-icon.svg")
     div(class="blick")
 </template>

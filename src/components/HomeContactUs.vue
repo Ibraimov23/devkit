@@ -28,19 +28,19 @@ export default {
     socials: [
       {
         type: "Телефон",
-        number: "+7 950 679 74 84",
+        number: "+996 551636369",
       },
       {
         type: "Telegram",
-        number: "@vldslv25",
+        number: "@ibraimov_nursultan",
       },
       {
         type: "Вконтакте",
-        number: "@vldslv25",
+        number: "@id510664514",
       },
       {
         type: "WhatsApp",
-        number: "+7 950 679 74 84",
+        number: "+996551636369",
       },
     ],
   }),
